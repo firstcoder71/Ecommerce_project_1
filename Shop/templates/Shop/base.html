@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="UTF-8" />
+  <meta name="description" content="Yoga Studio Template" />
+  <meta name="keywords" content="Yoga, unica, creative, html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  {% block title %}
+  <title>VIOLET</title>
+  {% endblock %}
+
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900&display=swap"
+    rel="stylesheet" />
+
+  {% block css %}
+  <link rel="icon" href="{% static 'Shop/img/favicon1.png' %}" type="image/x-icon" />
+  <link rel="stylesheet" href="{% static 'Shop/css/bootstrap.min.css' %}" type="text/css" />
+  <link rel="stylesheet" href="{% static 'Shop/css/font-awesome.min.css' %}" type="text/css" />
+  <link rel="stylesheet" href="{% static 'Shop/css/nice-select.css' %}" type="text/css" />
+  <link rel="stylesheet" href="{% static 'Shop/css/owl.carousel.min.css' %}" type="text/css" />
+  <link rel="stylesheet" href="{% static 'Shop/css/magnific-popup.css' %}" type="text/css" />
+  <link rel="stylesheet" href="{% static 'Shop/css/slicknav.min.css' %}" type="text/css" />
+  <link rel="stylesheet" href="{% static 'Shop/css/slicknav.min.css' %}" type="text/css" />
+  <link rel="stylesheet" href="{% static 'Shop/css/style.css' %}" type="text/css" />
+  <link rel="stylesheet" href="{% static 'Shop/css/nav.css' %}" type="text/css" />
+  <link rel="stylesheet" href="{% static 'Shop/css/profile.css' %}" type="text/css" />
+
+
+  {% endblock %}
+
+  {% block hero %}
+
+  {% endblock %}
+
+  {% block header %}
+  <!-- Page Preloder -->
+  <div id="preloder">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Search model -->
+  <div class="search-model">
+    <div class="h-100 d-flex align-items-center justify-content-center">
+      <div class="search-close-switch">+</div>
+      <form class="search-model-form">
+        <input type="text" id="search-input" placeholder="Search here....." />
+      </form>
+    </div>
+  </div>
+  <!-- Search model end -->
+
+  <!-- Header Section Begin -->
+  <header class="header-section">
+    <div class="wrap container-fluid">
+      <div class="">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p class="mb-0 phone"><span class="fa fa-phone"></span> <a href="">01799-82434</a></p>
+          </div>
+          <div class="col d-flex justify-content-end">
+            <div class="social-media">
+              <p class="mb-0 d-flex">
+                <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i
+                      class="sr-only">Facebook</i></span></a>
+                <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i
+                      class="sr-only">Twitter</i></span></a>
+                <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i
+                      class="sr-only">Instagram</i></span></a>
+                <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i
+                      class="sr-only">Dribbble</i></span></a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+      <div class="container-fluid" style="margin-left: 30px;">
+        <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'Shop/img/logo.png' %}" alt=""></a>
+        <form action="#" class="searchform order-sm-start order-lg-last">
+          <div class="form-group d-flex">
+            <input type="text" class="form-control pl-3" placeholder="Search">
+            <button type="submit" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
+          </div>
+        </form>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+          aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="fa fa-bars"></span> Menu
+        </button>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav" style="margin-left: 50px;">
+            <li class="nav-item "><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">Shop Details</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown04">
+                <a class="dropdown-item" href="{% url 'categories' %}">Shop</a>
+                <a class="dropdown-item" href="{% url 'shopcard' %}">Shopping Card</a>
+                <a class="dropdown-item" href="{% url 'checkout' %}">Check out</a>
+              </div>
+            </li>
+            <li class="nav-item"><a href="#" class="nav-link">Catalog</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
+            <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+
+
+            {% if request.user.is_authenticated %}
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">{{ request.user }}</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown04">
+                <a class="dropdown-item" href="{% url "profile" %}">Profile Details</a>
+                <a class="dropdown-item" href="{% url "passwordchange" %}">Change Password</a>
+                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+              </div>
+            </li>
+
+            {% else %}
+
+            <li class="nav-item"><a href="{% url 'customerregistration' %}" class="nav-link">Registration</a></li>
+            <li class="nav-item"><a href="{% url 'login' %}" class="nav-link">Login</a></li>
+
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  {% endblock %}
+
+  <main>
+    {% block content %}
+
+    {% endblock %}
+  </main>
+
+  {% block footer %}
+  <!-- Footer Section Begin -->
+  <footer class="footer-section spad">
+    <div class="container">
+      <div class="newslatter-form">
+        <div class="row">
+          <div class="col-lg-12">
+            <form action="#">
+              <input type="text" placeholder="Your email address" />
+              <button type="submit">Subscribe to our newsletter</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="footer-widget">
+        <div class="row">
+          <div class="col-lg-3 col-sm-6">
+            <div class="single-footer-widget">
+              <h4>About us</h4>
+              <ul>
+                <li>About Us</li>
+                <li>Community</li>
+                <li>Jobs</li>
+                <li>Shipping</li>
+                <li>Contact Us</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="single-footer-widget">
+              <h4>Customer Care</h4>
+              <ul>
+                <li>Search</li>
+                <li>Privacy Policy</li>
+                <li>2019 Lookbook</li>
+                <li>Shipping & Delivery</li>
+                <li>Gallery</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="single-footer-widget">
+              <h4>Our Services</h4>
+              <ul>
+                <li>Free Shipping</li>
+                <li>Free Returnes</li>
+                <li>Our Franchising</li>
+                <li>Terms and conditions</li>
+                <li>Privacy Policy</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="single-footer-widget">
+              <h4>Information</h4>
+              <ul>
+                <li>Payment methods</li>
+                <li>Times and shipping costs</li>
+                <li>Product Returns</li>
+                <li>Shipping methods</li>
+                <li>Conformity of the products</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="social-links-warp">
+      <div class="container">
+        <div class="social-links">
+          <a href="" class="instagram"><i class="fa fa-instagram"></i><span>instagram</span></a>
+          <a href="" class="pinterest"><i class="fa fa-pinterest"></i><span>pinterest</span></a>
+          <a href="" class="facebook"><i class="fa fa-facebook"></i><span>facebook</span></a>
+          <a href="" class="twitter"><i class="fa fa-twitter"></i><span>twitter</span></a>
+          <a href="" class="youtube"><i class="fa fa-youtube"></i><span>youtube</span></a>
+          <a href="" class="tumblr"><i class="fa fa-tumblr-square"></i><span>tumblr</span></a>
+        </div>
+      </div>
+
+      <div class="container text-center pt-5">
+        <p>
+          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          Copyright &copy;
+          <script>
+            document.write(new Date().getFullYear())
+          </script>All rights reserved | This template is made with <i class="icon-heart color-danger"
+            aria-hidden="true"></i> by <a href="#" target="_blank">Rashedul Islam</a>
+          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        </p>
+      </div>
+    </div>
+  </footer>
+  <!-- Footer Section End -->
+  {% endblock %}
+
+  {% block script %}
+  <!-- Js Plugins -->
+  <script src="{% static 'Shop/js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'Shop/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'Shop/js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'Shop/js/jquery.slicknav.js' %}"></script>
+  <script src="{% static 'Shop/js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'Shop/js/jquery.nice-select.min.js' %}"></script>
+  <script src="{% static 'Shop/js/mixitup.min.js' %}"></script>
+  <script src="{% static 'Shop/js/main.js' %}"></script>
+
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/popper.js' %}"></script>
+  {% comment %}
+  <script src="js/bootstrap.min.js"></script> {% endcomment %}
+  {% comment %}
+  <script src="js/main.js"></script> {% endcomment %}
+  {% endblock %}
+  {% block scripthero %}
+  {% endblock %}
+</head>
+
+</html>

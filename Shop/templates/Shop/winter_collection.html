@@ -1,0 +1,99 @@
+{% extends 'Shop/base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Page Add Section Begin -->
+<section class="page-add">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="page-breadcrumb">
+          <h2>Dresses<span>.</span></h2>
+          <a class="active" href="{% url 'categories' %}">Home</a>
+          <a class="active" href="{% url 'allpro' %}">All Products</a>
+          <a class="active" href="{% url 'winter' %}">Winter Collections</a>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <img src="img/add.jpg" alt="" />
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Page Add Section End -->
+
+<!-- Categories Page Section Begin -->
+<section class="categories-page spad">
+  <div class="container">
+    <div class="categories-controls">
+      <div class="row">
+        <div class="col">
+          <div class="">
+            <div class="">
+              <nav
+                class="collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0"
+                id="navbar-vertical">
+                <div class="navbar-nav w-100 overflow-hidden" style="height: 300px">
+                  <div class="nav-item dropdown">
+                    <a href="#" class="nav-link" data-toggle="dropdown">Dresses <i
+                        class="fa fa-angle-down float-right mt-1"></i></a>
+                    <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
+                      <a href="{% url 'winter' %}" class="dropdown-item">Men's Dresses</a>
+                      <a href="{% url 'winteritem' 'Twelve' %}" class="dropdown-item">Twelve</a>
+                      <a href="{% url 'winteritem' 'Foring' %}" class="dropdown-item">Foring</a>
+
+                      <a href="{% url 'winteritem' 'high_price' %}" class="dropdown-item">high_price</a>
+
+                      <a href="{% url 'winteritem' 'low_price' %}" class="dropdown-item">Low_Price</a>
+                    </div>
+                  </div>
+                </div>
+              </nav>
+            </div>
+            <div class="cf-right">
+              <span>20 Products</span>
+              <a href="#">2</a>
+              <a href="#" class="active">4</a>
+              <a href="#">6</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="list-group">
+        <a href="{% url 'winter' %}" class="list-group-item list-group-item-action active" aria-current="true">All Lehenga</a>
+        <a href="{% url 'winteritem' 'Lubana' %}" class="list-group-item list-group-item-action">Lubana</a>
+        <a href="{% url 'winteritem' 'Foring' %}" class="list-group-item list-group-item-action">Foring</a>
+        <a href="{% url 'winteritem' 'Infinity' %}" class="list-group-item list-group-item-action">Infinity</a>
+        <a href="{% url 'winteritem' 'above' %}" class="list-group-item list-group-item-action">Above 2500</a>
+        <a href="{% url 'winteritem' 'below' %}" class="list-group-item list-group-item-action">Below 2500</a>
+      </div> -->
+    <div class="row" id="product-list">
+      {% for p in wintercollection %}
+      <div class="col-lg-3 col-sm-6 mix all accesories bags">
+        <div class="single-product-item">
+          <figure>
+            <a href="{% url 'productpage' p.id %}"><img src="{{ p.product_image.url }}" alt="" /></a>
+            <div class="p-status popular" style="color: white; background-color: #308AAB;">{{ p.title }}</div>
+          </figure>
+          <a href="{% url 'productpage' p.id %}">
+            <div class="product-text">
+              <h6>{{ p.product_name }}</h6>
+              <p>${{ p.selling_price }}</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="more-product">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <a href="#" class="primary-btn">Load More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Categories Page Section End -->
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends 'Shop/base.html' %}
+{% load static %}
+
+{% block content %}
+  <!-- Page Add Section Begin -->
+  <section class="page-add">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="page-breadcrumb">
+            <h2>Dresses<span>.</span></h2>
+            <a class="active" href="{% url 'categories' %}">Home</a>
+            <a class="active" href="{% url 'allpro' %}">All Products</a>
+            <a class="active" href="{% url 'winter' %}">Winter Collections</a>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <img src="img/add.jpg" alt="" />
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Page Add Section End -->
+
+  <!-- Categories Page Section Begin -->
+  <section class="categories-page spad">
+    <div class="container">
+      <div class="categories-controls">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="categories-filter">
+              <div class="cf-left">
+                <form action="#">
+                  <select class="sort">
+                    <option value="">Sort by</option>
+                    <option value="">Orders</option>
+                    <option value="">Newest</option>
+                    <option value="">Price</option>
+                  </select>
+                </form>
+              </div>
+              <div class="cf-right">
+                <span>20 Products</span>
+                <a href="#">2</a>
+                <a href="#" class="active">4</a>
+                <a href="#">6</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" id="product-list">
+        {% for p in alllp %}
+          <div class="col-lg-3 col-sm-6 mix all accesories bags">
+            <div class="single-product-item">
+              <figure>
+                <a href="{% url 'productpage' p.id %}"><img src="{{ p.product_image.url }}" alt="" /></a>
+                <div class="p-status popular" style="color: white; background-color: #308AAB;">{{ p.title }}</div>
+              </figure>
+              <a href="{% url 'productpage' p.id %}">
+                <div class="product-text">
+                  <h6>{{ p.product_name }}</h6>
+                  <p>${{ p.selling_price }}</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="more-product">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <a href="#" class="primary-btn">Load More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Categories Page Section End -->
+{% endblock %}

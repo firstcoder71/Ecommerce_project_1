@@ -1,0 +1,48 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block title %}
+  <title>Register</title>
+{% endblock %}
+
+{% block hero %}
+<link rel="stylesheet" href="{% static 'Shop/css/register.css' %}" type="text/css" />
+{% endblock %}
+
+{% block content %}
+<div class="form-v4">
+	<div class="page-content">
+		<div class="form-v4-content">
+			<div class="form-left">
+				<h2 class="information">INFOMATION</h2>
+				<p class="text-1" style="color:white;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et molestie ac feugiat sed. Diam volutpat commodo.</p>
+				<p class="text-2" style="color:white;"><span>Eu ultrices:</span> Vitae auctor eu augue ut. Malesuada nunc vel risus commodo viverra. Praesent elementum facilisis leo vel.</p>
+				<a class="form-left-last" href="{% url 'login' %}">
+					<input type="submit" name="account" class="account" value="Have An Account">
+				</a>
+			</div>
+			<form class="form-detail" action="#" method="POST" novalidate id="myform">
+				<h2>REGISTER FORM</h2>
+				{% if messages %}
+                {% for message in messages %}
+                <p {% if message.tags %} class="alert alert-{{message.tags}} mb-5" {% endif %}>{{message}}</p>
+                {% endfor %}
+                {% endif %}
+				{% csrf_token %}
+				{% for i in form %}
+              <div >
+                {{i.label_tag}}{{i}}<small class="text-danger">{{i.errors | striptags }}</small><br>
+              </div>
+              {% endfor %}
+				<div class="form-row-last">
+					<input type="submit" name="register" class="register" value="Register">
+				</div>
+				{% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                <p class="alert alert-danger my-3">{{error}}</p>
+                {% endfor %}
+                {% endif %}
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock  %}
